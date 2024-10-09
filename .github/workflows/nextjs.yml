@@ -1,0 +1,65 @@
+name: CI/CD
+
+on:
+  push:
+    branches: ["production"]
+  pull_request:
+    branches: ["production"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+        
+      - name: Install dependenciess
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Commit build files
+        run: |
+          git config --local user.email "kaynguyen22898@gmail.com"
+          git config --local user.name "Solamk"
+          git add -f dist/cazola/browser/
+          git commit -m "Deploy build files" || echo "No changes to commit"
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+
+      - name: Set up Git remote
+        run: |
+          git remote set-url origin https://github.com/solmak8980/Cazola.git
+
+      - name: Push changes
+        run: |
+          git push origin production
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Upload to FTP server
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.astrafs.shop
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /public_html/
+          local-dir:  /home/runner/work/Cazola/Cazola/dist/cazola/browser/
