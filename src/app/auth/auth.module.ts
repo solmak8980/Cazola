@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthLayoutComponent } from '../layouts/auth-layout/auth-layout.component';
 import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 const authRoutes: Routes = [
   {
@@ -20,7 +21,8 @@ const authRoutes: Routes = [
   declarations: [AuthLayoutComponent, LoginComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(authRoutes)
+    RouterModule.forChild(authRoutes),
+    FormsModule
   ],
 })
 export class AuthModule { }

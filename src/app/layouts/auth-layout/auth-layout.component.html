@@ -1,24 +1,30 @@
-<div class="w-full">
-    <div class="font-[sans-serif]">
-      <div class="min-h-screen flex flex-col items-center justify-center">
+<div class="w-full font-sans bg-slate-400">
+  <div class="min-h-screen flex items-center justify-center">
+    <div
+      class="flex flex-col md:flex-row items-center bg-white w-full shadow-2xl rounded-lg overflow-hidden"
+    >
+      <!-- Form Section with Gradient Background and Padding -->
+      <div class="w-full md:w-1/2 h-screen px-10 md:px-32 content-center justify-center">
+        <router-outlet></router-outlet>
+      </div>
+
+      <!-- Full-Screen Background Image Section with Overlay -->
+      <div class="hidden md:block w-full md:w-1/2 h-screen relative">
         <div
-          class="grid md:grid-cols-2 grid-cols-1 items-center bg-slate-100 gap-4 max-w-6xl w-full shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md"
+          class="absolute inset-0 bg-[url('https://readymadeui.com/signin-image.webp')] bg-cover bg-center opacity-80"
+        ></div>
+        <div class="absolute inset-0 bg-blue-900 opacity-50"></div>
+        <div
+          class="relative flex flex-col items-center justify-center h-full p-8 text-center"
         >
-          <!-- Form Section -->
-          <div class="w-full p-6">
-            <router-outlet></router-outlet>
-          </div>
-  
-          <!-- Image Section, hidden on small screens -->
-          <div class="hidden md:block w-full h-auto md:h-full bg-[#000842] rounded-xl">
-            <img
-              src="https://readymadeui.com/signin-image.webp"
-              class="w-full h-full object-contain"
-              alt="login-image"
-            />
-          </div>
+          <h2 class="text-white text-4xl font-extrabold drop-shadow-md">
+            Welcome to Our Platform
+          </h2>
+          <p class="text-blue-200 mt-4 text-lg drop-shadow-md">
+            Experience seamless booking and management.
+          </p>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
