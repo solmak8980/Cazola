@@ -44,7 +44,7 @@ jobs:
 
       - name: Push changes
         run: |
-          git push origin production
+          git push -u origin production
         env:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
 
