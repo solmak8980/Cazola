@@ -2,9 +2,9 @@ name: CI/CD
 
 on:
   push:
-    branches: ["page"]
+    branches: ["production"]
   pull_request:
-    branches: ["page"]
+    branches: ["production"]
   workflow_dispatch:
 
 permissions:
@@ -23,7 +23,7 @@ jobs:
           node-version: "20"
           cache: "npm"
         
-      - name: Install dependencies
+      - name: Install dependenciess
         run: npm ci
 
       - name: Build project
@@ -44,7 +44,7 @@ jobs:
 
       - name: Push changes
         run: |
-          git push -u origin page
+          git push -u origin production
         env:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
 
@@ -62,4 +62,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /public_html/
-          local-dir: /home/runner/work/Cazola/Cazola/dist/cazola/browser/
+          local-dir:  /home/runner/work/Cazola/Cazola/dist/cazola/browser/
