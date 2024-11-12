@@ -29,6 +29,25 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Commit build files
+        run: |
+          git config --local user.email "kaynguyen22898@gmail.com"
+          git config --local user.name "Solamk"
+          git add -f dist/cazola/browser/
+          git commit -m "Deploy build files" || echo "No changes to commit"
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+
+      - name: Set up Git remote
+        run: |
+          git remote set-url origin https://github.com/solmak8980/Cazola.git
+
+      - name: Push changes
+        run: |
+          git push -u origin page
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
