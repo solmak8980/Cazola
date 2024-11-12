@@ -1,1 +1,19 @@
-<p>dashboard works!</p>
+<button
+  class="bg-green-600 text-white font-semibold p-2 hover:bg-green-500 rounded-lg mx-2"
+  (click)="showSuccessToast()"
+>
+  Show Success Toast
+</button>
+<button
+  class="bg-red-600 text-white font-semibold p-2 hover:bg-red-500 rounded-lg mx-2"
+  (click)="showErrorToast()"
+>
+  Show Error Toast
+</button>
+
+<img
+  src="assets/images/logo.jpg"
+  alt="Random Image"
+  class="h-12 w-12 object-contain"
+/>
+<app-toast #toast></app-toast>

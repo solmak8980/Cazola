@@ -1,0 +1,22 @@
+<nav class="bg-blue-600 shadow-md">
+  <div class="container mx-auto flex items-center justify-between p-4">
+    <!-- Logo -->
+    <div class="text-white font-bold text-lg">ShareZone</div>
+    <!-- Navigation Links -->
+    <div class="flex space-x-4">
+      <a href="/admin" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md transition duration-200">Home</a>
+      <a href="/about" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md transition duration-200">About</a>
+      <a href="/contact" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md transition duration-200">Contact</a>
+    </div>
+
+    <!-- Button to toggle sidenav (hamburger icon) -->
+    <button
+      (click)="toggleSidenav()"
+      class="text-white md:hidden px-3 py-2 rounded-md transition duration-200"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+</nav>

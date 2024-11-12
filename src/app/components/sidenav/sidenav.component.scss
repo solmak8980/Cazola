@@ -1,0 +1,22 @@
+/* sidenav.component.css */
+.fixed {
+  position: fixed;
+}
+.translate-x-0 {
+  transform: translateX(0);
+}
+.-translate-x-full {
+  transform: translateX(-100%);
+}
+.myfont{
+  font-family: 'MyFont';
+}
+
+.sidebar-scrollable {
+  overflow: auto;
+  scrollbar-width: none;  /* For Firefox */
+}
+
+.sidebar-scrollable::-webkit-scrollbar {
+  display: none;  /* For Chrome, Safari, and Opera */
+}

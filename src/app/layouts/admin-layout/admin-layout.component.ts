@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './admin-layout.component.scss'
 })
 export class AdminLayoutComponent {
+  isSidenavVisible: boolean = false;
 
+  toggleSidenav() {
+    this.isSidenavVisible = !this.isSidenavVisible;
+  }
 }

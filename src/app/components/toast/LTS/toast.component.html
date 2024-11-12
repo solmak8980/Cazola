@@ -1,0 +1,16 @@
+<div
+  *ngIf="isVisible"
+  class="fixed top-4 right-4 max-w-xs w-full bg-gray-800 text-white p-4 rounded-lg shadow-lg transition-transform transform"
+  [class.translate-y-0]="isVisible"
+  [class.-translate-y-full]="!isVisible"
+>
+  <div class="flex items-center">
+    <ng-container *ngIf="type === 'success'">
+      <span class="text-green-500">✔</span>
+    </ng-container>
+    <ng-container *ngIf="type === 'error'">
+      <span class="text-red-500">✖</span>
+    </ng-container>
+    <span class="ml-3">{{ message }}</span>
+  </div>
+</div>

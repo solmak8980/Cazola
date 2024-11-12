@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthLayoutComponent } from '../layouts/auth-layout/auth-layout.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { ToastComponent } from '../components/toast/toast.component';
+import { ToastComponentLTS } from '../components/toast/LTS/toast.component';
 
 const authRoutes: Routes = [
   {
@@ -18,7 +20,7 @@ const authRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AuthLayoutComponent, LoginComponent],
+  declarations: [AuthLayoutComponent, LoginComponent, ToastComponentLTS],
   imports: [
     CommonModule,
     RouterModule.forChild(authRoutes),

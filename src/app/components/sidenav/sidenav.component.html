@@ -1,0 +1,95 @@
+<div class="relative">
+  <!-- Sidebar -->
+  <div
+    class="fixed inset-0 h-screen text-white flex flex-col lg:w-64 w-56 transition-transform duration-300"
+    [ngClass]="{
+      'transform translate-x-0': isOpen,
+      '-translate-x-full': !isOpen
+    }"
+  >
+    <!-- Sidebar header -->
+    <div class="py-4 flex justify-center items-center space-x-4">
+      <h2
+        class="text-4xl font-semibold  uppercase tracking-wider drop-shadow-lg  transition duration-300"
+      >
+        <span class="text-orange-700">SHARE</span
+        ><span class="text-indigo-700">ZONE</span>
+      </h2>
+    </div>
+
+    <!-- Navigation -->
+    <nav
+      class="mt-1 space-y-3 px-6 py-4 flex-grow overflow-y-auto sidebar-scrollable"
+    >
+      <!-- Group 1: Main Navigation -->
+      <div>
+        <h3
+          class="text-base font-semibold text-gray-200 uppercase tracking-wider"
+        >
+          Main Navigation
+        </h3>
+        <a
+          *ngFor="let mainItem of mainMenuItems"
+          [href]="mainItem.link"
+          class="flex items-center space-x-3 my-2 px-4 py-2 text-gray-100 hover:bg-blue-500 hover:text-white rounded-lg transition duration-300 transform hover:scale-100"
+        >
+          <ng-icon [name]="mainItem.icon"></ng-icon>
+          <span>{{ mainItem.label }}</span>
+        </a>
+      </div>
+
+      <!-- Group 2: Settings -->
+      <div>
+        <h3
+          class="text-base font-semibold text-gray-300 uppercase tracking-wider"
+        >
+          Settings
+        </h3>
+        <a
+          *ngFor="let secondItem of secondMenuItems"
+          [href]="secondItem.link"
+          class="flex items-center space-x-3 px-6 py-3 text-gray-100 hover:bg-blue-600 hover:text-white rounded-lg transition duration-300 transform hover:scale-105"
+        >
+          <ng-icon [name]="secondItem.icon"></ng-icon>
+          <span>{{ secondItem.label }}</span>
+        </a>
+      </div>
+
+      <!-- Group 3: Support -->
+      <div>
+        <h3
+          class="text-base font-semibold text-gray-300 uppercase tracking-wider"
+        >
+          Support
+        </h3>
+        <a
+          *ngFor="let thirtItem of thirtMenuItems"
+          [href]="thirtItem.link"
+          class="flex items-center space-x-3 px-6 py-3 text-gray-100 hover:bg-blue-600 hover:text-white rounded-lg transition duration-300 transform hover:scale-105"
+        >
+          <ng-icon [name]="thirtItem.icon"></ng-icon>
+          <span>{{ thirtItem.label }}</span>
+        </a>
+      </div>
+      <div class="w-full py-3 flex justify-center">
+        <button
+          class="w-full bg-red-600 flex items-center justify-center space-x-1 text-white rounded-lg py-2 hover:bg-red-700 transition duration-300 transform hover:scale-105"
+          (click)="logout()"
+        >
+          <span>Logout</span>
+          <ng-icon name="saxLogin1Bold"></ng-icon>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Mobile menu toggle button -->
+  <button
+    class="lg:hidden absolute top-4 left-4 z-10 text-white"
+    (click)="isOpen = !isOpen"
+  >
+    <ng-icon name="menu" class="text-4xl"></ng-icon>
+  </button>
+</div>
+
+<app-toast #toast></app-toast>
