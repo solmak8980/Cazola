@@ -23,30 +23,11 @@ jobs:
           node-version: "20"
           cache: "npm"
         
-      - name: Install dependenciess
+      - name: Install dependencies
         run: npm ci
 
       - name: Build project
         run: npm run build
-
-      - name: Commit build files
-        run: |
-          git config --local user.email "kaynguyen22898@gmail.com"
-          git config --local user.name "Solamk"
-          git add -f dist/cazola/browser/
-          git commit -m "Deploy build files" || echo "No changes to commit"
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-
-      - name: Set up Git remote
-        run: |
-          git remote set-url origin https://github.com/solmak8980/Cazola.git
-
-      - name: Push changes
-        run: |
-          git push -u origin production
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -62,4 +43,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /public_html/
-          local-dir:  /home/runner/work/Cazola/Cazola/dist/cazola/browser/
+          local-dir: /home/runner/work/Cazola/Cazola/dist/cazola/browser/
